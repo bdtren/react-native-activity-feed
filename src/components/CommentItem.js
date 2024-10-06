@@ -8,7 +8,6 @@ import Avatar from './Avatar';
 import { buildStylesheet } from '../styles';
 
 import { withTranslationContext } from '../Context';
-import SeeMoreText from '../../../../src/components/SeeMoreText';
 
 /**
  * Renders a comment
