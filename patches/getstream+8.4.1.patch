@@ -1,0 +1,43 @@
+diff --git a/node_modules/getstream/src/client.ts b/node_modules/getstream/src/client.ts
+index 4578a8d..821202e 100644
+--- a/node_modules/getstream/src/client.ts
++++ b/node_modules/getstream/src/client.ts
+@@ -673,12 +673,16 @@ export class StreamClient<StreamFeedGenerics extends DefaultGenerics = DefaultGe
+     name?: string,
+     contentType?: string,
+     onUploadProgress?: (progressEvent: typeof AxiosProgressEvent) => void,
++    customHeaders?: axios.AxiosRequestHeaders,
+   ) {
+     const fd = utils.addFileToFormData(uri, name, contentType);
+     return this.doAxiosRequest<FileUploadAPIResponse>('POST', {
+       url,
+       body: fd,
+-      headers: fd.getHeaders ? fd.getHeaders() : {}, // node vs browser
++      headers: {
++        ...(fd?.getHeaders?.() ?? {}), // node vs browser
++        ...(customHeaders ?? {})
++      },
+       token: this.getOrCreateToken(),
+       axiosOptions: {
+         timeout: 0,
+diff --git a/node_modules/getstream/src/images.ts b/node_modules/getstream/src/images.ts
+index f56c469..44f7f31 100644
+--- a/node_modules/getstream/src/images.ts
++++ b/node_modules/getstream/src/images.ts
+@@ -1,4 +1,4 @@
+-import AxiosProgressEvent from 'axios';
++import AxiosProgressEvent, { AxiosRequestHeaders } from 'axios';
+ import { StreamClient, FileUploadAPIResponse } from './client';
+ 
+ export type ImageProcessOptions = {
+@@ -34,8 +34,9 @@ export class StreamImageStore {
+     name?: string,
+     contentType?: string,
+     onUploadProgress?: (progressEvent: typeof AxiosProgressEvent) => void,
++    customHeaders?: AxiosRequestHeaders,
+   ) {
+-    return this.client.upload('images/', uri, name, contentType, onUploadProgress);
++    return this.client.upload('images/', uri, name, contentType, onUploadProgress, customHeaders);
+   }
+ 
+   /**

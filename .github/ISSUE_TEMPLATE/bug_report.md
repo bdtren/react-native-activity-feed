@@ -8,7 +8,7 @@ about: Report a problem with the library
 - iOS or Android?
 - Expo or regular React Native?
 - React Native Version:
-- `react-native-activity-feed` or `expo-activity-feed` version: `npm list --pattern <package-name>`/`yarn list --pattern <package-name>`
+- `@bdtren/react-native-activity-feed` or `@bdtren/expo-activity-feed` version: `npm list --pattern <package-name>`/`yarn list --pattern <package-name>`
 - `getstream` version: `npm list --pattern getstream`/`yarn list --pattern getstream`
 
 **Describe the bug**

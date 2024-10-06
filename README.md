@@ -2,9 +2,9 @@
 
 > React Native components to create activity and notification feeds using Stream
 
-[![NPM](https://img.shields.io/npm/v/react-native-activity-feed.svg)](https://www.npmjs.com/package/react-native-activity-feed)
-[![Build Status](https://travis-ci.org/GetStream/react-native-activity-feed.svg?branch=master)](https://travis-ci.org/GetStream/react-native-activity-feed)
-[![Component Reference](https://img.shields.io/badge/docs-component%20reference-blue.svg)](https://getstream.github.io/react-native-activity-feed/)
+[![NPM](https://img.shields.io/npm/v/react-native-activity-feed.svg)](https://www.npmjs.com/package/@bdtren/react-native-activity-feed)
+[![Build Status](https://travis-ci.org/bdtren/react-native-activity-feed.svg?branch=master)](https://travis-ci.org/bdtren/react-native-activity-feed)
+[![Component Reference](https://img.shields.io/badge/docs-component%20reference-blue.svg)](https://bdtren.github.io/react-native-activity-feed/)
 
 ![react native activity feed](./src/images/githubhero.png)
 
@@ -13,7 +13,7 @@ building scalable newsfeeds and activity streams.
 
 ## :warning: This SDK is no longer actively maintained by Stream
 
-A Feeds integration includes a combination of server-side and client-side code and the interface can vary widely which is why we are no longer focussing on supporting this SDK. If you are starting from scratch we recommend you only use the server-side SDKs. 
+A Feeds integration includes a combination of server-side and client-side code and the interface can vary widely which is why we are no longer focussing on supporting this SDK. If you are starting from scratch we recommend you only use the server-side SDKs.
 
 This is by no means a reflection of our commitment to maintaining and improving the Feeds API which will always be a product that we support.
 
@@ -37,22 +37,22 @@ Note: The user interface for the activity feed can vary widely across different 
 
 - [Get Started](https://getstream.io/react-native-activity-feed/tutorial/)
 - [Example app](https://github.com/GetStream/react-native-example#react-native-activity-feed-example)
-- [Component reference docs](https://getstream.github.io/react-native-activity-feed/)
-- [Internationalisation (i18n)](https://getstream.github.io/react-native-activity-feed/#internationalisation-i18n)
+- [Component reference docs](https://bdtren.github.io/react-native-activity-feed/)
+- [Internationalisation (i18n)](https://bdtren.github.io/react-native-activity-feed/#internationalisation-i18n)
 
 ## 🔐 React Native Compatibility
 
 To use this library you need to ensure you match up with the correct version of React Native you are using.
 
-| `react-native-activity-feed` version | [`getstream`](https://www.npmjs.com/package/getstream) | react-native |
-| ------------------------------------ | ------------------------------------------------------ | ------------ |
-| `1.x.x`                              | `>= 0.6.x`                                             | `>= 0.60.0`  |
-| `0.x.x`                              | `< 0.6.0`                                              | `< 0.60.0`   |
+| `@bdtren/react-native-activity-feed` version | [`getstream`](https://www.npmjs.com/package/getstream) | react-native |
+| -------------------------------------------- | ------------------------------------------------------ | ------------ |
+| `2.x.x`                                      | `>= 8.x.x`                                             | `>= 0.68.0`  |
+| Not support                                  | `< 0.6.0`                                              | `< 0.60.0`   |
 
 ## 🔮 Example Apps
 
-- [Expo example](https://github.com/GetStream/react-native-activity-feed/tree/master/examples/expo#expo-example)
-- [Native example](https://github.com/GetStream/react-native-activity-feed/tree/master/examples/native#native-example)
+- [Expo example](https://github.com/bdtren/react-native-activity-feed/tree/master/examples/expo#expo-example)
+- [Native example](https://github.com/bdtren/react-native-activity-feed/tree/master/examples/native#native-example)
 - [Complete social networking app](https://github.com/GetStream/react-native-example#react-native-activity-feed-example)
 
 ## 🛠 Installation
@@ -61,7 +61,7 @@ To use this library you need to ensure you match up with the correct version of 
 
 ```sh
 # For Expo apps
-expo install expo-activity-feed expo-permissions expo-image-picker
+expo install @bdtren/expo-activity-feed expo-image-picker react-native-fast-image
 
 ```
 
@@ -69,7 +69,7 @@ expo install expo-activity-feed expo-permissions expo-image-picker
 
 ```sh
 # For apps with native code
-yarn add react-native-activity-feed react-native-image-crop-picker
+yarn add @bdtren/react-native-activity-feed react-native-image-crop-picker react-native-fast-image
 npx pod-install
 ```
 

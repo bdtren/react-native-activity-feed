@@ -1,11 +1,10 @@
-import { registerNativeHandlers } from 'react-native-activity-feed-core';
-import * as Permissions from 'expo-permissions';
+import { registerNativeHandlers } from '@bdtren/react-native-activity-feed-core';
 import * as ImagePicker from 'expo-image-picker';
 
 registerNativeHandlers({
   pickImage: async ({ compressImageQuality = 0.2 }) => {
     try {
-      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
       if (status !== 'granted') {
         return {
           cancelled: true,
@@ -25,7 +24,7 @@ registerNativeHandlers({
       }
       return {
         cancelled: false,
-        uri: rest.uri,
+        uri: rest?.assets?.[0]?.uri,
       };
     } catch (err) {
       return {
@@ -33,6 +32,7 @@ registerNativeHandlers({
       };
     }
   },
+  sdkPackageName: 'expo-package',
 });
 
-export * from 'react-native-activity-feed-core';
+export * from '@bdtren/react-native-activity-feed-core';

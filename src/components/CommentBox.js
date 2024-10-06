@@ -1,6 +1,6 @@
 //
 import React from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, ScrollView } from 'react-native';
 import KeyboardAccessory from 'react-native-sticky-keyboard-accessory';
 import PropTypes from 'prop-types';
 
@@ -17,7 +17,7 @@ import { withTranslationContext } from '../Context';
 class CommentBox extends React.Component {
   static defaultProps = {
     styles: {},
-    height: 80,
+    height: 0,
     verticalOffset: 25,
     noKeyboardAccessory: false,
   };
@@ -71,9 +71,11 @@ class CommentBox extends React.Component {
     return (
       <React.Fragment>
         <View style={{ height: this.props.height }} />
-        <KeyboardAccessory verticalOffset={this.props.verticalOffset}>
-          {input}
-        </KeyboardAccessory>
+        {/* <KeyboardAccessory verticalOffset={this.props.verticalOffset}> */}
+          <ScrollView>
+            {input}
+          </ScrollView>
+        {/* </KeyboardAccessory> */}
       </React.Fragment>
     );
   }

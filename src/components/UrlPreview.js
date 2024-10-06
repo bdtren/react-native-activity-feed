@@ -1,7 +1,8 @@
 //
 import React from 'react';
-import { Image, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import { buildStylesheet } from '../styles';
 import _ from 'lodash';
@@ -18,7 +19,7 @@ export default class UrlPreview extends React.Component {
       <View style={styles.wrapper}>
         <View style={[styles.leftColumn]}>
           {this.props.og && this.props.og.images ? (
-            <Image
+            <FastImage
               source={
                 this.props.og.images[0].image
                   ? {
@@ -38,7 +39,7 @@ export default class UrlPreview extends React.Component {
         <TouchableOpacity
           onPress={() => this.props.onPressDismiss(this.props.og.url)}
         >
-          <Image
+          <FastImage
             source={require('../images/icons/close-black.png')}
             style={[styles.closeButton]}
           />

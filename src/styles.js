@@ -265,6 +265,10 @@ export const styles = {
       paddingLeft: 15,
       paddingRight: 15,
     },
+    imageContainer: {},
+    image: {
+      aspectRatio: 1,
+    },
     mention: {
       color: '#0076FF',
       fontWeight: '700',
@@ -418,6 +422,12 @@ export const styles = {
     },
     commentContent: {
       fontSize: 14,
+    },
+    txtBtnExpand: {
+      marginBottom: -3,
+      fontSize: 14,
+      color: '#27557A',
+      textDecorationLine: 'underline',
     },
     commentTime: {
       fontSize: 14,

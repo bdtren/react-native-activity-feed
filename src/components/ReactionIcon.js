@@ -1,7 +1,8 @@
 //
 import React from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import { buildStylesheet } from '../styles';
 
@@ -65,10 +66,11 @@ const ReactionIcon = withTranslationContext((props) => {
   if (props.width !== undefined) {
     dimensions.width = props.width;
   }
+  const {Icon} = props
 
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <Image source={props.icon} style={[styles.image, dimensions]} />
+      {Icon ? <Icon /> : <FastImage source={props.icon} style={[styles.image, dimensions]} />}
       {count != null ? (
         <Text style={styles.text}>{defaultLabelFunction(count, props)}</Text>
       ) : null}

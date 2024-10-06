@@ -26,6 +26,7 @@ export default class ReactionList extends React.PureComponent {
     reverseOrder: false,
   };
 
+
   render() {
     return (
       <FeedContext.Consumer>
@@ -72,19 +73,22 @@ class ReactionListInner extends React.Component {
       getActivityPath,
       oldestToNewest,
     } = this.props;
-    if (!oldestToNewest) {
-      return;
-    }
+    // if (!oldestToNewest) {
+    //   return;
+    // }
 
     const activityPath = this.props.activityPath || getActivityPath(activityId);
-    const orderPrefix = 'oldest';
+    const orderPrefix = oldestToNewest ? 'oldest' : 'latest';
+
     const reactions_extra = activities.getIn([
       ...activityPath,
       orderPrefix + '_reactions_extra',
     ]);
+
     if (reactions_extra) {
       return;
     }
+
     return this.props.loadNextReactions(
       activityId,
       reactionKind,

@@ -1,7 +1,8 @@
 //
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import { humanizeTimestamp } from '../utils';
 
@@ -52,7 +53,7 @@ const UserBar = ({
         <Text style={styles.username}>{username}</Text>
         <View style={{ flexDirection: 'row' }}>
           {icon !== undefined ? (
-            <Image
+            <FastImage
               source={icon}
               style={{ width: 24, height: 24, top: -2, marginRight: 5 }}
             />

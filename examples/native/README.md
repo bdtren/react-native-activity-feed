@@ -9,7 +9,7 @@ Make sure node version is >= v10.13.0
   yarn global add expo-cli
 
   # Clone the repository
-  git clone https://github.com/GetStream/react-native-activity-feed.git
+  git clone https://github.com/bdtren/react-native-activity-feed.git
 
   # Go to native example directory
   cd react-native-activity-feed/examples/native

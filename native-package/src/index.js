@@ -1,4 +1,4 @@
-import { registerNativeHandlers } from 'react-native-activity-feed-core';
+import { registerNativeHandlers } from '@bdtren/react-native-activity-feed-core';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import { Platform } from 'react-native';
@@ -27,6 +27,7 @@ registerNativeHandlers({
       };
     }
   },
+  sdkPackageName: 'native-package',
 });
 
-export * from 'react-native-activity-feed-core';
+export * from '@bdtren/react-native-activity-feed-core';

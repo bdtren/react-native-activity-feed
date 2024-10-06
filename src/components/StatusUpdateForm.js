@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   View,
-  Image,
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
@@ -10,6 +9,7 @@ import {
   Keyboard,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import { StreamApp, withTranslationContext } from '../Context';
 import UrlPreview from './UrlPreview';
@@ -20,7 +20,7 @@ import { buildStylesheet } from '../styles';
 import _ from 'lodash';
 import Symbol from 'es6-symbol';
 import KeyboardAccessory from 'react-native-sticky-keyboard-accessory';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import KeyboardSpacer from 'react-native-keyboard-spacer-abivet';
 
 const ImageState = Object.freeze({
   NO_IMAGE: Symbol('no_image'),
@@ -29,7 +29,8 @@ const ImageState = Object.freeze({
   UPLOAD_FAILED: Symbol('upload_failed'),
 });
 
-const urlRegex = /(?:\s|^)((?:https?:\/\/)?(?:[a-z0-9-]+(?:\.[a-z0-9-]+)+)(?::[0-9]+)?(?:\/(?:[^\s]+)?)?)/g;
+const urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+
 class StatusUpdateForm extends React.Component {
   static defaultProps = {
     feedGroup: 'user',
@@ -193,18 +194,17 @@ class StatusUpdateFormInner extends React.Component {
 
     let response;
     let contentType;
-    let type;
     if (Platform.OS === 'android') {
       const filename = result.uri.replace(/^(file:\/\/|content:\/\/)/, '');
       contentType = mime.lookup(filename) || 'application/octet-stream';
-      type = contentType;
     }
     try {
       response = await this.props.client.images.upload(
         result.uri,
         null,
         contentType,
-        type,
+        null,
+	      {'Content-Type': 'multipart/form-data'}
       );
     } catch (e) {
       console.warn(e);
@@ -266,7 +266,6 @@ class StatusUpdateFormInner extends React.Component {
     if (Object.keys(attachments).length > 0) {
       activity.attachments = attachments;
     }
-
     const modifiedActivity = this.props.modifyActivityData(activity);
 
     if (this.props.doRequest) {
@@ -422,7 +421,7 @@ class StatusUpdateFormInner extends React.Component {
               >
                 {this.state.image ? (
                   <React.Fragment>
-                    <Image
+                    <FastImage
                       source={{ uri: this.state.image }}
                       style={
                         this.state.imageState === ImageState.UPLOADING
@@ -436,7 +435,7 @@ class StatusUpdateFormInner extends React.Component {
                         <ActivityIndicator color='#ffffff' />
                       ) : (
                         <TouchableOpacity onPress={this._removeImage}>
-                          <Image
+                          <FastImage
                             source={require('../images/icons/close-white.png')}
                             style={[{ width: 24, height: 24 }]}
                           />
@@ -449,7 +448,7 @@ class StatusUpdateFormInner extends React.Component {
                     title={t('Pick an image from camera roll')}
                     onPress={this._pickImage}
                   >
-                    <Image
+                    <FastImage
                       source={require('../images/icons/gallery.png')}
                       style={{ width: 24, height: 24 }}
                     />
@@ -461,7 +460,7 @@ class StatusUpdateFormInner extends React.Component {
                 onPress={this.onSubmitForm}
                 disabled={!this._canSubmit()}
               >
-                <Image
+                <FastImage
                   source={
                     this._canSubmit()
                       ? require('../images/icons/send.png')
@@ -473,7 +472,7 @@ class StatusUpdateFormInner extends React.Component {
             </View>
           </View>
         </View>
-        {this.props.fullscreen ? <KeyboardSpacer /> : null}
+        {this.props.fullscreen && Platform.OS === 'ios' ? <KeyboardSpacer /> : null}
       </View>
     );
   }

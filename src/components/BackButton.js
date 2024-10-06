@@ -1,6 +1,7 @@
 //
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import PropTypes from 'prop-types';
 
 import { buildStylesheet } from '../styles';
@@ -22,7 +23,7 @@ export default class BackButton extends React.Component {
 
     return (
       <TouchableOpacity style={styles.container} onPress={pressed}>
-        <Image
+        <FastImage
           source={
             blue
               ? require('../images/icons/backarrow-blue.png')

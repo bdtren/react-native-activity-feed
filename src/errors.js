@@ -1,4 +1,4 @@
-import { StreamApiError } from 'getstream';
+import { StreamApiError } from 'getstream/src';
 export const handleError = (error, type, detail) => {
   console.warn(error);
   alert(getErrorMessage(error, type, detail));

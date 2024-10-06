@@ -1,7 +1,8 @@
 //
 import React from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import PickPhotoIcon from '../images/icons/pickphoto.png';
 import { buildStylesheet } from '../styles';
@@ -12,7 +13,7 @@ const UploadImage = ({ onUploadButtonPress, ...props }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onUploadButtonPress}>
-        <Image source={PickPhotoIcon} style={styles.image} />
+        <FastImage source={PickPhotoIcon} style={styles.image} />
       </TouchableOpacity>
     </View>
   );

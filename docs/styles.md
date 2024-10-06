@@ -4,7 +4,7 @@ You can also change specific styles globally using the `updateStyle` function fr
 
 ```js static
 
-import { updateStyle } from 'expo-activity-feed';
+import { updateStyle } from '@bdtren/expo-activity-feed';
 
 updateStyle('avatar', {
     container: {

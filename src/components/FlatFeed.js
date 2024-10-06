@@ -144,7 +144,6 @@ class FlatFeedInner extends React.Component {
   _refresh = async () => {
     this._scrollToTop();
     await this.props.refresh(this.props.options);
-    this._scrollToTop();
   };
 
   _scrollToTop() {
@@ -203,6 +202,7 @@ class FlatFeedInner extends React.Component {
       <React.Fragment>
         {smartRender(this.props.Notifier, notifierProps)}
         <FlatList
+          automaticallyAdjustKeyboardInsets
           ListHeaderComponent={this.props.children}
           style={styles.container}
           refreshing={this.props.refreshing}

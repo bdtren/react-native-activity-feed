@@ -171,7 +171,7 @@ Stream provides following list of in-built translations:
     frTranslations,
     hiTranslations,
     itTranslations,
-  } from 'react-native-activity-feed';
+  } from '@bdtren/react-native-activity-feed';
   ```
 
   If you would like to maintain your own translation files:

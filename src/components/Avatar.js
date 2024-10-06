@@ -1,7 +1,8 @@
 //
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import FastImage from 'react-native-fast-image';
 
 import UploadImage from './UploadImage';
 import { StreamApp } from '../Context';
@@ -74,7 +75,7 @@ const AvatarInner = (props) => {
         },
       ]}
     >
-      <Image
+      <FastImage
         style={[
           styles.image,
           {

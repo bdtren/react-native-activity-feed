@@ -2,10 +2,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
+import FastImage from 'react-native-fast-image';
 import {
   View,
   Text,
-  Image,
   Dimensions,
   TouchableOpacity,
   Linking,
@@ -51,7 +51,7 @@ export default class Activity extends React.Component {
     activity: PropTypes.object,
     /** Width of an image that's displayed, by default this is
      * the width of the screen */
-    imageWidth: PropTypes.number,
+    imageWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Styling of the component */
     styles: PropTypes.object,
     /**
@@ -237,19 +237,23 @@ export default class Activity extends React.Component {
         )}
 
         {Boolean(image) && (
-          <Image
-            style={{ width, height: width }}
-            source={{ uri: image }}
-            resizeMethod='resize'
-          />
+          <View style={styles.imageContainer}>
+            <FastImage
+              style={[{ width, aspectRatio: 1 }, styles.image]}
+              source={{ uri: image }}
+              resizeMethod='resize'
+            />
+          </View>
         )}
 
         {attachments && attachments.images && attachments.images.length > 0 && (
-          <Image
-            style={{ width, height: width }}
-            source={{ uri: attachments.images[0] }}
-            resizeMethod='resize'
-          />
+          <View style={styles.imageContainer}>
+            <FastImage
+              style={[{ width, aspectRatio: 1 }, styles.image]}
+              source={{ uri: attachments.images[0] }}
+              resizeMethod='resize'
+            />
+          </View>
         )}
         {attachments &&
           attachments.og &&
@@ -265,7 +269,7 @@ export default class Activity extends React.Component {
             og: attachments.og,
           })}
 
-        {}
+        { }
       </View>
     );
   };
@@ -282,6 +286,7 @@ export default class Activity extends React.Component {
         style={[styles.container]}
         onPress={this._getOnPress()}
         disabled={!this._getOnPress()}
+        activeOpacity={0.7}
       >
         {smartRender(Header, {}, this.renderHeader)}
         {smartRender(Content, {}, this.renderContent)}

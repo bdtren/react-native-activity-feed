@@ -1,4 +1,6 @@
 //
+import 'intl-pluralrules';
+
 export {
   StreamApp,
   withTranslationContext,

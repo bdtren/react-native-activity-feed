@@ -1,7 +1,11 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-import { STREAM_API_KEY, STREAM_API_TOKEN, STREAM_APP_ID } from '@env';
+const {
+  EXPO_PUBLIC_STREAM_API_KEY,
+  EXPO_PUBLIC_STREAM_API_SECRET,
+  EXPO_PUBLIC_STREAM_APP_ID,
+} = process.env;
 
 import {
   StreamApp,
@@ -9,12 +13,12 @@ import {
   Activity,
   StatusUpdateForm,
   LikeButton,
-} from 'expo-activity-feed';
+} from '@bdtren/expo-activity-feed';
 
 const App = () => {
-  const apiKey = STREAM_API_KEY;
-  const appId = STREAM_APP_ID;
-  const token = STREAM_API_TOKEN;
+  const apiKey = EXPO_PUBLIC_STREAM_API_KEY;
+  const appId = EXPO_PUBLIC_STREAM_APP_ID;
+  const token = EXPO_PUBLIC_STREAM_API_SECRET;
 
   if (!apiKey) {
     console.error('STREAM_API_KEY should be set');

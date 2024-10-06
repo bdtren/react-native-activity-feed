@@ -9,7 +9,7 @@ import {
   Activity,
   StatusUpdateForm,
   LikeButton,
-} from 'react-native-activity-feed';
+} from '@bdtren/react-native-activity-feed';
 
 const App = () => {
   const apiKey = STREAM_API_KEY;
